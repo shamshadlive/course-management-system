@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     
     #custom apps
     'accounts',
-    'course'
+    'course',
+    'django_summernote'
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,14 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'width': '800',
+        'height': '300',
+        'styles': [
+           
+        ],
+    },
+}

@@ -21,6 +21,7 @@
     <link id="style" href="{% static 'course/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
     <!-- STYLE CSS -->
+    <link href="{% static 'course/assets/css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'course/assets/css/style.css' %}" rel="stylesheet" />
 	
     <link href="{% static 'course/assets/css/style-custom.css' %}" rel="stylesheet" />
@@ -53,7 +54,7 @@
                     <div class="wrap-login100 p-6">
 					 <div class="col col-login mx-auto m-5">
 					   <div class="text-center">
-							<a href="index.php"><img src="{% static 'course/assets/images_ex/logo.png' %}" class="header-brand-img" alt=""></a>
+							<a href="{% url 'home' %}"><img src="{% static 'course/assets/images_ex/logo.png' %}" class="header-brand-img" alt=""></a>
 						</div>
 					</div>
 
@@ -69,6 +70,7 @@
                                                     <i class="zmdi zmdi-code text-white" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="text" placeholder="Name" name="first_name" value="{{ form.first_name.value|default:'' }}">
+                                                {{form.first_name.errors}}
                                             </div>
 
                                             <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
@@ -76,13 +78,17 @@
                                                     <i class="zmdi zmdi-email text-white" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="email" placeholder="Email" name="email" value="{{ form.email.value|default:'' }}">
+                                                
                                             </div>
+                                            {{form.email.errors}}
 
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-white" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="password" placeholder="Password" name="password">
+                                                {{form.password.errors}}
+
                                             </div>
 
                                             {% if messages %}
