@@ -3,9 +3,30 @@
 
  {% include "course/header.html" %} 
  <!--app-content open-->
+
             <div class="main-content app-content mt-0">
                 <div class="side-app">
 
+                    
+                      
+                        {% if messages %}
+                        <div class="alert alert-primary alert-dismissible fade show my-2"   role="alert">
+                        <ul class="messages my-2">
+                            {% for message in messages %}
+                           
+
+                                {{ message }}
+                             
+                            {% endfor %}
+                        </ul>
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        
+                        </div>
+                        {% endif %}
+
+  
+                      
                     <!-- CONTAINER -->
                     <div class="main-container container-fluid">
 

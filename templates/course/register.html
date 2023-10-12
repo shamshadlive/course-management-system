@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'course/assets/images_ex/fav.png' %}" />
 
     <!-- TITLE -->
-    <title>Join IT Tech Admin | Login</title>
+    <title>Join IT Tech Admin | Register</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{% static 'course/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -57,55 +57,61 @@
 						</div>
 					</div>
 
-                    {% if messages %}
-                    <ul class="messages my-2">
-                        {% for message in messages %}
-                       
-                        <div class="alert alert-primary" role="alert">
-                            {{ message }}
-                          </div>
+                   
 
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-
-					 
                         <form class="login100-form validate-form" method="post">
-                          
                             {% csrf_token %}
+                           
                                
                                
+                                            <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid Name is required: User">
+                                                <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                                    <i class="zmdi zmdi-code text-white" aria-hidden="true"></i>
+                                                </a>
+                                                <input class="input100 border-start-0 form-control ms-0" type="text" placeholder="Name" name="first_name" value="{{ form.first_name.value|default:'' }}">
+                                            </div>
+
                                             <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-email text-white" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" type="email" placeholder="Email" name="email" required >
+                                                <input class="input100 border-start-0 form-control ms-0" type="email" placeholder="Email" name="email" value="{{ form.email.value|default:'' }}">
                                             </div>
+
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-white" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" type="password" placeholder="Password" name="password" required>
+                                                <input class="input100 border-start-0 form-control ms-0" type="password" placeholder="Password" name="password">
                                             </div>
+
+                                            {% if messages %}
+                                            <ul class="messages">
+                                                {% for message in messages %}
+                                               
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{ message }}
+                                                  </div>
+                        
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+
                                            
                                             <div class="container-login100-form-btn">
                                                 <button type="submit" class="login100-form-btn btn-primary">
-                                                        Login
+                                                       Register Now
                                                 </button>
                                             </div>
-
-                                            
                                            
 
                           
 
                         </form>
 
-                        <div class="container-login100-form-btn">
-                            <a href="{% url 'register-page' %}" class="login100-form-btn btn-danger">
-                                    Register
-                            </a>
-                        </div>
+                        Already account login now <a href="{% url 'login-page' %}" class="">
+                            Login Now
+                     </a>
                     </div>
                 </div>
                 <!-- CONTAINER CLOSED -->
