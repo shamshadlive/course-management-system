@@ -70,8 +70,8 @@
                                                     <i class="zmdi zmdi-code text-white" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="text" placeholder="Name" name="first_name" value="{{ form.first_name.value|default:'' }}">
-                                                {{form.first_name.errors}}
                                             </div>
+                                            {{form.first_name.errors}}
 
                                             <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
@@ -87,9 +87,9 @@
                                                     <i class="zmdi zmdi-eye text-white" aria-hidden="true"></i>
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" type="password" placeholder="Password" name="password">
-                                                {{form.password.errors}}
-
+                                                
                                             </div>
+                                            {{form.password.errors}}
 
                                             {% if messages %}
                                             <ul class="messages">
