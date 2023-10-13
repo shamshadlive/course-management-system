@@ -24,3 +24,6 @@ class ShortTermCourse(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def course_name(self):
+        return f'{self.title}'

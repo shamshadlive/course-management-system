@@ -14,6 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden
+from django.http import JsonResponse
 # Create your views here.
 
 @login_required(login_url='login-page')
@@ -153,3 +154,28 @@ class shortTermCourseView(ListView):
 @login_required(login_url='login-page')
 def userProfile (request):
     return render(request, 'course/profile.html')
+
+
+
+def autocomplete(request):
+    try:
+        if 'term' in request.GET:
+            search_query = request.GET.get('term')
+            short_term_course = ShortTermCourse.objects.filter(user=request.user)
+            
+            #search
+            terms = search_query.split()  # Split the search query into individual terms
+            for term in terms:
+                short_term_course = [
+                                course for course in short_term_course
+                                if term.lower() in course.course_name().lower()
+                            ]
+            
+            title = []
+            title += [ x.course_name() for x in short_term_course ]
+            return JsonResponse(title,safe=False)
+    except:
+        return JsonResponse({
+            'status':400
+        })
+        

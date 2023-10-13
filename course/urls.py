@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home,login_Page,shortTermCourseView,shortTermCourse_Create,userProfile,register_Page,logout_Page,ShortTermCourseUpdate,delete_short_term_course
+from .views import home,login_Page,shortTermCourseView,shortTermCourse_Create,userProfile,register_Page,logout_Page,ShortTermCourseUpdate,delete_short_term_course,autocomplete
 
 urlpatterns = [
     path("", home, name="home"),
@@ -11,4 +11,6 @@ urlpatterns = [
     path("shorterm-course/<int:pk>/update/", ShortTermCourseUpdate.as_view(), name="short-term-course-update"),
     path("shorterm-course/<int:pk>/delete/", delete_short_term_course, name="short-term-course-delete"),
     path("profile/", userProfile, name="user-profile"),
+    #autocomplete
+    path("autocomplete", autocomplete, name="autocomplete"),
     ]
